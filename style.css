@@ -33,30 +33,43 @@ body {
 }
 .app {
   width: 100%;
-  max-width: 520px;
+  max-width: 560px;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 1.75rem;
   align-self: flex-start;
 }
-h1 { margin: 0 0 .25rem; font-size: 1.6rem; }
-.count { margin: 0 0 1.25rem; color: var(--muted); font-size: .95rem; }
-form { display: flex; gap: .5rem; }
-input[type="text"] {
-  flex: 1;
+.date { margin: 0 0 .15rem; color: var(--accent); font-weight: 600; font-size: .95rem; }
+h1 { margin: 0 0 .25rem; font-size: 1.7rem; }
+.count { margin: 0 0 1.1rem; color: var(--muted); font-size: .95rem; }
+
+.tabs { display: flex; gap: .25rem; border-bottom: 1px solid var(--border); margin-bottom: 1.1rem; }
+.tab {
+  padding: .5rem 1rem;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 600;
+  margin-bottom: -1px;
+}
+.tab.active { color: var(--text); border-bottom-color: var(--accent); }
+
+form { display: flex; flex-wrap: wrap; gap: .5rem; }
+form #task-input { flex: 1 1 200px; }
+input[type="text"], input[type="date"] {
   padding: .7rem .8rem;
   font-size: 1rem;
   border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--bg);
   color: var(--text);
+  font-family: inherit;
 }
-button {
-  font: inherit;
-  cursor: pointer;
-}
-form button {
+input[hidden] { display: none; }
+button { font: inherit; cursor: pointer; }
+form > button {
   padding: .7rem 1rem;
   border: 0;
   border-radius: 8px;
@@ -64,9 +77,11 @@ form button {
   color: #fff;
   font-weight: 600;
 }
-form button:hover { background: var(--accent-dark); }
+form > button:hover { background: var(--accent-dark); }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
 .filters { display: flex; gap: .4rem; margin: 1.1rem 0 .6rem; }
+.filters[hidden], .link-btn[hidden] { display: none; }
 .filter {
   padding: .35rem .8rem;
   border: 1px solid var(--border);
@@ -75,28 +90,52 @@ form button:hover { background: var(--accent-dark); }
   color: var(--muted);
 }
 .filter.active { background: var(--accent); border-color: var(--accent); color: #fff; }
-ul { list-style: none; margin: 0; padding: 0; }
-li {
+
+ul { list-style: none; margin: 1rem 0 0; padding: 0; }
+li.group {
+  margin: 1.1rem 0 .2rem;
+  font-weight: 700;
+  font-size: .95rem;
+  color: var(--accent);
+}
+li.task {
   display: flex;
   align-items: center;
-  gap: .7rem;
-  padding: .7rem 0;
+  gap: .6rem;
+  padding: .65rem 0;
   border-bottom: 1px solid var(--border);
+  border-top: 2px solid transparent;
 }
-li input[type="checkbox"] { width: 1.15rem; height: 1.15rem; accent-color: var(--accent); }
-li span { flex: 1; word-break: break-word; }
-li.done span { text-decoration: line-through; color: var(--muted); }
-.delete {
+li.task.dragging { opacity: .4; }
+li.task.over-before { border-top-color: var(--accent); }
+li.task.over-after { border-bottom-color: var(--accent); }
+.handle { cursor: grab; color: var(--muted); user-select: none; letter-spacing: -2px; }
+li.task input[type="checkbox"] { width: 1.15rem; height: 1.15rem; accent-color: var(--accent); }
+.body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: .15rem; }
+.text { word-break: break-word; }
+li.done .text { text-decoration: line-through; color: var(--muted); }
+.tag { font-size: .8rem; color: var(--danger); }
+.edit-input { width: 100%; padding: .4rem .5rem; }
+.actions { display: flex; gap: .15rem; }
+.small {
   border: 0;
   background: transparent;
-  color: var(--danger);
-  padding: .2rem .5rem;
+  color: var(--muted);
+  padding: .25rem .45rem;
   border-radius: 6px;
+  font-size: .85rem;
 }
-.delete:hover { background: var(--bg); }
+.small:hover { background: var(--bg); color: var(--text); }
+.small.delete { color: var(--danger); }
 .empty { color: var(--muted); text-align: center; padding: 1rem 0; }
-.link-btn { margin-top: 1rem; border: 0; background: none; color: var(--muted); text-decoration: underline; padding: 0; }
+.hint { color: var(--muted); font-size: .85rem; margin: 1rem 0 0; }
+.link-btn { margin-top: .75rem; border: 0; background: none; color: var(--muted); text-decoration: underline; padding: 0; }
 .visually-hidden {
   position: absolute; width: 1px; height: 1px; overflow: hidden;
   clip: rect(0 0 0 0); white-space: nowrap;
+}
+@media (max-width: 480px) {
+  .app { padding: 1.1rem; }
+  li.task { flex-wrap: wrap; }
+  .actions { width: 100%; justify-content: flex-end; }
 }

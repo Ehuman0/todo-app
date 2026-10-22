@@ -8,23 +8,34 @@
 </head>
 <body>
   <main class="app">
-    <h1>Today's tasks</h1>
-    <p id="count" class="count" aria-live="polite"></p>
+    <header>
+      <p id="today-date" class="date"></p>
+      <h1 id="heading">Today</h1>
+      <p id="count" class="count" aria-live="polite"></p>
+    </header>
+
+    <div class="tabs" role="tablist" aria-label="Task lists">
+      <button id="tab-today" class="tab active" role="tab" aria-selected="true" data-view="today">Today</button>
+      <button id="tab-upcoming" class="tab" role="tab" aria-selected="false" data-view="upcoming">Upcoming</button>
+    </div>
 
     <form id="task-form" autocomplete="off">
       <label for="task-input" class="visually-hidden">New task</label>
-      <input id="task-input" type="text" placeholder="What needs doing?" maxlength="120" required>
+      <input id="task-input" type="text" placeholder="What needs doing today?" maxlength="120" required>
+      <label for="task-date" class="visually-hidden">Due date</label>
+      <input id="task-date" type="date" hidden>
       <button type="submit">Add task</button>
     </form>
 
-    <div class="filters" role="group" aria-label="Filter tasks">
+    <div id="filters" class="filters" role="group" aria-label="Filter tasks">
       <button class="filter active" data-filter="all">All</button>
       <button class="filter" data-filter="active">Active</button>
       <button class="filter" data-filter="done">Done</button>
     </div>
 
     <ul id="task-list"></ul>
-    <p id="empty" class="empty" hidden>No tasks here. Add one above.</p>
+    <p id="empty" class="empty" hidden></p>
+    <p class="hint">Drag a task by its handle to reorder it. Double-click a task to edit it.</p>
 
     <button id="clear-done" class="link-btn">Clear completed</button>
   </main>

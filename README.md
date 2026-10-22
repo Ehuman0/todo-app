@@ -2,12 +2,16 @@
 
 A simple, fast to-do list app built with plain HTML, CSS, and JavaScript. No frameworks, no build step. Tasks are saved in your browser, so they are still there after you refresh.
 
-**Live demo:** https://ehuman0.github.io/todo-app/
+**Live demo:** https://YOUR-USERNAME.github.io/todo-app/
 
 ## Features
 
-- Add, complete, and delete tasks
-- Filter by All, Active, or Done
+- Shows today's date at the top
+- **Today** tab and **Upcoming** tab for future tasks, grouped by date
+- Upcoming tasks move into Today automatically when their day arrives
+- Add, complete, edit, and delete tasks
+- Drag and drop to reorder (or use the up and down buttons on touch screens)
+- Filter Today's list by All, Active, or Done
 - Clear all completed tasks at once
 - Tasks saved automatically with `localStorage`
 - Works on phones and desktops
@@ -15,13 +19,13 @@ A simple, fast to-do list app built with plain HTML, CSS, and JavaScript. No fra
 
 ## Screenshot
 
-Will add soon
+![To-Do List screenshot](screenshot.png)
 
 ## Run it locally
 
 1. Clone the repository:
    ```bash
-   git clone https://ehuman0.github.io/todo-app/
+   git clone https://github.com/YOUR-USERNAME/todo-app.git
    ```
 2. Open the folder:
    ```bash
@@ -49,9 +53,8 @@ todo-app/
 
 ## Ideas for improvement
 
-- Edit an existing task
-- Due dates and priorities
-- Drag and drop to reorder
+- Priorities and categories
+- Repeating tasks
 - Export and import tasks
 
 ## Contributing
