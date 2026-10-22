@@ -2,7 +2,7 @@
 
 A simple, fast to-do list app built with plain HTML, CSS, and JavaScript. No frameworks, no build step. Tasks are saved in your browser, so they are still there after you refresh.
 
-**Live demo:** https://github.com/Ehuman0
+**Live demo:** [https://github.com/Ehuman0](https://ehuman0.github.io/todo-app/)
 
 ## Features
 
